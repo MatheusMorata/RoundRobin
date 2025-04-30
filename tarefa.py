@@ -8,6 +8,5 @@ class Tarefa:
     def executar(self):
         print(f"Executando tarefa: {self.nome}")
         while self.tempo_restante > 0:
-            print(f"Tarefa {self.nome}: {self.tempo_restante} unidades de tempo restantes.")
+            print(f"{self.nome}: {self.tempo_restante} unidades de tempo restantes.")
             self.tempo_restante -= 1
-            sleep(1)  # Simula o tempo de execução 
