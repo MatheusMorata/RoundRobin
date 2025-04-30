@@ -21,6 +21,7 @@ class Escalonador:
             for p in processos:
                 if p.is_alive():
                     os.kill(p.pid, signal.SIGSTOP)  # Pausa o processo
+                    print(f"Executando processo PID {p.pid} por {self.quantum} segundos.")
                     sleep(self.quantum)
                     os.kill(p.pid, signal.SIGCONT)  # Continua o processo
                     sleep(1)  
