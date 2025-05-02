@@ -23,7 +23,7 @@ class Escalonador:
             })
             p.start()
             sleep(0.1)  # Evitar problemas de inicialização
-            os.kill(p.pid, signal.SIGSTOP)  # Pausa todos os processos inicialmente
+            os.kill(p.pid, signal.SIGSTOP)  
 
         while True:
             # Verifica se todos os processos terminaram
@@ -40,18 +40,17 @@ class Escalonador:
             # Calcula o tempo de execução (quantum ou tempo restante)
             tempo_execucao = min(self.quantum, processo_atual['tempo_restante'])
             
-            print(f"Executando: {processo_atual['nome']} por {tempo_execucao}s")
+            with open("log.txt", "a") as f:
+                f.write(f"Executando: {processo_atual['nome']} por {tempo_execucao}s\n")
             
             # Continua o processo
             os.kill(p.pid, signal.SIGCONT)
             
-            # Espera pelo tempo de execução
             sleep(tempo_execucao)
             
             # Pausa o processo
             os.kill(p.pid, signal.SIGSTOP)
-            
-            # Atualiza o tempo restante
+
             processo_atual['tempo_restante'] -= tempo_execucao
             
             # Move para o próximo processo
