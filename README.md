@@ -12,11 +12,20 @@ python main.py
 ## Para criar cenários
 
 # 1. Crie tarefas
+
+```bash
 tarefa1 = Tarefa("Processo A", 5)
 tarefa2 = Tarefa("Processo B", 3)
+```
 
 # 2. Adicione à lista
+
+```bash
 tarefas = [tarefa1, tarefa2]
+```
 
 # 3. Defina o quantum (unidades de tempo)
+
+```bash
 escalonador = Escalonador(2, tarefas)  # Quantum = 2
+```
